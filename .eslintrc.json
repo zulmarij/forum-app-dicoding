@@ -6,11 +6,7 @@
     "jest": true,
     "cypress/globals": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "react-app"
-  ],
+  "extends": ["plugin:react/recommended", "airbnb", "react-app"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -18,9 +14,14 @@
   },
   "plugins": ["react", "react-hooks", "cypress"],
   "rules": {
+    "linebreak-style": "off",
+    "no-alert": "off",
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off",
     "react/jsx-filename-extension": "off",
-    "linebreak-style": ["error", "windows"],
-    "no-alert": "off"
-    
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": "warn"
   }
 }
