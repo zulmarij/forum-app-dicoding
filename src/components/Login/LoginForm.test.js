@@ -2,8 +2,16 @@ import React from 'react';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import LoginForm from './LoginForm';
-
 import '@testing-library/jest-dom';
+
+/**
+ * test scenario
+ *
+ * - LoginForm component
+ *   - should handle email typing correctly
+ *   - should handle password typing correctly
+ *   - should call login function when login button is clicked
+ */
 
 describe('LoginForm component', () => {
   it('should handle email typing correctly', async () => {

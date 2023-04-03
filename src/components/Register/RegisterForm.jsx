@@ -2,12 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useInput } from '../../hooks';
 
-export default function LoginForm({ onLogin }) {
+export default function RegisterForm({ onRegister }) {
+  const [name, setName] = useInput('');
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
 
   return (
     <>
+      <input
+        type="text"
+        placeholder="Name"
+        className="input input-bordered w-full"
+        value={name}
+        onChange={setName}
+      />
       <input
         type="text"
         placeholder="Email"
@@ -25,14 +33,14 @@ export default function LoginForm({ onLogin }) {
       <button
         type="button"
         className="btn btn-primary"
-        onClick={() => onLogin({ email, password })}
+        onClick={() => onRegister({ name, email, password })}
       >
-        Login
+        Register
       </button>
     </>
   );
 }
 
-LoginForm.propTypes = {
-  onLogin: PropTypes.func.isRequired,
+RegisterForm.propTypes = {
+  onRegister: PropTypes.func.isRequired,
 };

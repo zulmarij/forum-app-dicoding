@@ -21,12 +21,17 @@ export default function Leaderboards({ leaderboards }) {
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img src={leaderboard.user.avatar} alt={leaderboard.user.name} />
+                          <img
+                            src={leaderboard.user.avatar}
+                            alt={leaderboard.user.name}
+                          />
                         </div>
                       </div>
                       <div>
                         <div className="font-bold">{leaderboard.user.name}</div>
-                        <div className="text-sm opacity-50">{leaderboard.user.email}</div>
+                        <div className="text-sm opacity-50">
+                          {leaderboard.user.email}
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -47,5 +52,6 @@ const leaderboardsShape = {
 };
 
 Leaderboards.propTypes = {
-  leaderboards: PropTypes.arrayOf(PropTypes.shape(leaderboardsShape)).isRequired,
+  leaderboards: PropTypes.arrayOf(PropTypes.shape(leaderboardsShape))
+    .isRequired,
 };

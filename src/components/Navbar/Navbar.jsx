@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { asyncLogout } from '../app/states/authUser/action';
+import { asyncLogout } from '../../app/states/authUser/action';
 
 export default function Navbar() {
   const { authUser } = useSelector((state) => state);

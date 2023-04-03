@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 
-export default function Login({ onLogin }) {
+export default function Register({ onRegister }) {
   return (
     <div className="flex justify-center items-center h-[calc(100vh-7rem)]">
       <div className="card bg-base-200 w-96 shadow-xl">
         <div className="card-body gap-3">
-          <LoginForm onLogin={onLogin} />
+          <RegisterForm onRegister={onRegister} />
           <p>
-            Dont have an account yet?
+            Already have an account?
             {' '}
-            <Link className="link font-bold" to="/register">
-              Register here
+            <Link className="link font-bold" to="/login">
+              Login here
             </Link>
           </p>
         </div>
@@ -22,6 +22,6 @@ export default function Login({ onLogin }) {
   );
 }
 
-Login.propTypes = {
-  onLogin: PropTypes.func.isRequired,
+Register.propTypes = {
+  onRegister: PropTypes.func.isRequired,
 };

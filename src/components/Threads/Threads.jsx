@@ -1,25 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ThreadItem from './ThreadItem';
+import { useSelector } from 'react-redux';
+import { Thread } from '../Thread';
 
-export default function ThreadsList({ threads }) {
+export default function Threads({ threads }) {
+  const { users } = useSelector((state) => state);
+
   return (
     <article>
       <h1 className="font-bold text-2xl">Threads</h1>
       {threads ? (
         <article className="grid lg:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-4 mt-2">
           {threads.map((thread) => (
-            <ThreadItem
+            <Thread
               key={thread.id}
               id={thread.id}
               title={thread.title}
               body={thread.body}
               category={thread.category}
               createdAt={thread.createdAt}
-              ownerId={thread.ownerId}
+              owner={users.find((user) => user.id === thread.ownerId)}
               totalComments={thread.totalComments}
               upVotesBy={thread.upVotesBy}
               downVotesBy={thread.downVotesBy}
+              type="threads"
             />
           ))}
         </article>
@@ -42,6 +46,6 @@ const threadsShape = {
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-ThreadsList.propTypes = {
+Threads.propTypes = {
   threads: PropTypes.arrayOf(PropTypes.shape(threadsShape)).isRequired,
 };
