@@ -1,5 +1,20 @@
 import threadsReducer from './reducer';
 
+/**
+ * test scenario for threadsReducer
+ *
+ * - threadsReducers function
+ *  - should return the initial state when given by unknown action
+ *  - should return the threads when given by GET_ALL_THREADS action
+ *  - should return the threads with the new thread when given by CREATE_THREAD action
+ *  - should return the threads with the toggled upvote thread when given by UP_VOTE_THREAD action
+ *  - should return the threads with the toggled downvote thread
+ *    when given by DOWN_VOTE_THREAD action
+ *  - should return the threads with the toggled neutral vote thread
+ *    when given by NEUTRAL_VOTE_THREAD action
+ *
+ */
+
 describe('threadsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
     // arrange
@@ -61,7 +76,7 @@ describe('threadsReducer function', () => {
     const action = {
       type: 'CREATE_THREAD',
       payload: {
-        threads: {
+        thread: {
           id: 'thread-2',
           title: 'Thread Kedua',
           body: 'Ini adalah thread kedua',
