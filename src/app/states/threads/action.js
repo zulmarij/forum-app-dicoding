@@ -60,15 +60,16 @@ function neutralVoteThreadActionCreator({ threadId, userId }) {
 function asyncCreateThread({ title, body, category }) {
   return async (dispatch) => {
     dispatch(showLoading());
-    const {
-      status,
-      message,
-      data: { thread },
-    } = await api.createThread({ title, body, category });
-    if (status === 'success') dispatch(createThreadActionCreator(thread));
-    dispatch(hideLoading());
-
-    return { status, message };
+    try {
+      const thread = await api.createThread({ title, body, category });
+      dispatch(createThreadActionCreator(thread));
+      return { status: 'success' };
+    } catch (error) {
+      alert(error.message);
+      return { status: 'error' };
+    } finally {
+      dispatch(hideLoading());
+    }
   };
 }
 
@@ -98,6 +99,7 @@ function asyncToggleVoteThread({ threadId, voteType, userId }) {
 
 export {
   ActionType,
+  createThreadActionCreator,
   getAllThreadsActionCreator,
   asyncCreateThread,
   asyncToggleVoteThread,

@@ -58,6 +58,7 @@ function asyncLogout() {
 export {
   ActionType,
   loginActionCreator,
+  logoutActionCreator,
   asyncLogin,
   asyncLogout,
 };

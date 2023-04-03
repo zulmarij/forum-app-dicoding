@@ -17,11 +17,16 @@ function getLeaderboardsActionCreator(leaderboards) {
 function asyncGetLeaderboards() {
   return async (dispatch) => {
     dispatch(showLoading());
-    const { status, message, data: { leaderboards } } = await api.getLeaderboards();
-    if (status === 'success') dispatch(getLeaderboardsActionCreator(leaderboards));
-    dispatch(hideLoading());
-
-    return { status, message };
+    try {
+      const leaderboards = await api.getLeaderboards();
+      dispatch(getLeaderboardsActionCreator(leaderboards));
+      return { status: 'success' };
+    } catch (error) {
+      alert(error.message);
+      return { status: 'error' };
+    } finally {
+      dispatch(hideLoading());
+    }
   };
 }
 

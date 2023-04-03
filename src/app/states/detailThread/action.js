@@ -100,22 +100,32 @@ function resetDetailThreadActionCreator() {
 function asyncGetDetailThread(id) {
   return async (dispatch) => {
     dispatch(showLoading());
-    const { status, message, data: { detailThread } } = await api.getDetailThread(id);
-    if (status === 'success') dispatch(getDetailThreadActionCreator(detailThread));
-    dispatch(hideLoading());
-
-    return { status, message };
+    try {
+      const detailThread = await api.getDetailThread(id);
+      dispatch(getDetailThreadActionCreator(detailThread));
+      return { status: 'success' };
+    } catch (error) {
+      alert(error.message);
+      return { status: 'error' };
+    } finally {
+      dispatch(hideLoading());
+    }
   };
 }
 
-function asyncCreateComment({ id, content }) {
+function asyncCreateComment({ threadId, content }) {
   return async (dispatch) => {
     dispatch(showLoading());
-    const { status, message, data: { comment } } = await api.createComment({ id, content });
-    if (status === 'success') dispatch(createCommentActionCreator(comment));
-    dispatch(hideLoading());
-
-    return { status, message };
+    try {
+      const comment = await api.createComment({ threadId, content });
+      dispatch(createCommentActionCreator(comment));
+      return { status: 'success' };
+    } catch (error) {
+      alert(error.message);
+      return { status: 'error' };
+    } finally {
+      dispatch(hideLoading());
+    }
   };
 }
 
@@ -171,6 +181,8 @@ function asyncToggleVoteCommentThread({
 
 export {
   ActionType,
+  getDetailThreadActionCreator,
+  createCommentActionCreator,
   resetDetailThreadActionCreator,
   asyncGetDetailThread,
   asyncCreateComment,
