@@ -2,7 +2,7 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../../utils/api';
 
 const ActionType = {
-  REGISTER_USER: 'REGISTER',
+  REGISTER_USER: 'REGISTER_USER',
   GET_ALL_USERS: 'GET_ALL_USERS',
 };
 
