@@ -33,7 +33,7 @@ export default function DetailThreadComments({ id, comments }) {
   const [content, setContent, changeContent] = useInput();
 
   const onCreateComment = () => {
-    dispatch(asyncCreateComment({ id, content })).then(({ status }) => {
+    dispatch(asyncCreateComment({ threadId: id, content })).then(({ status }) => {
       if (status === 'success') {
         changeContent('');
       }
