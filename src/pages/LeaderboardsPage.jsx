@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Leaderboards from '../components/Leaderboards';
 import { asyncGetLeaderboards } from '../app/states/leaderboards/action';
+import { Leaderboards } from '../components';
 
 export default function LeaderboardsPage() {
   const dispatch = useDispatch();
