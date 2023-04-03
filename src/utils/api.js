@@ -100,11 +100,13 @@ const api = (() => {
       }),
     });
     const responseJson = await response.json();
-    if (responseJson.status !== 'success') {
-      alert(responseJson.message);
+    const { status, message, data: { thread } } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    return responseJson;
+    return thread;
   }
 
   async function getAllThreads() {
@@ -122,15 +124,17 @@ const api = (() => {
   async function getDetailThread(id) {
     const response = await fetch(`${BASE_URL}/threads/${id}`);
     const responseJson = await response.json();
-    if (responseJson.status !== 'success') {
-      alert(responseJson.message);
+    const { status, message, data: { detailThread } } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    return responseJson;
+    return detailThread;
   }
 
-  async function createComment({ id, content }) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/${id}/comments`, {
+  async function createComment({ threadId, content }) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -140,11 +144,13 @@ const api = (() => {
       }),
     });
     const responseJson = await response.json();
-    if (responseJson.status !== 'success') {
-      alert(responseJson.message);
+    const { status, message, data: { comment } } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    return responseJson;
+    return comment;
   }
 
   async function upVoteThread(threadId) {
@@ -222,11 +228,13 @@ const api = (() => {
   async function getLeaderboards() {
     const response = await fetch(`${BASE_URL}/leaderboards`);
     const responseJson = await response.json();
-    if (responseJson.status !== 'success') {
-      alert(responseJson.message);
+    const { status, message, data: { leaderboards } } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    return responseJson;
+    return leaderboards;
   }
 
   return {
