@@ -17,10 +17,15 @@ function isPreloadActionCreator(isPreload) {
 
 function asyncIsPreload() {
   return async (dispatch) => {
+    const token = api.getAccessToken();
     dispatch(showLoading());
     try {
-      const user = await api.getOwnProfile();
-      dispatch(loginActionCreator(user));
+      if (token) {
+        const user = await api.getOwnProfile();
+        dispatch(loginActionCreator(user));
+      } else {
+        throw new Error();
+      }
     } catch (error) {
       dispatch(loginActionCreator(null));
     } finally {
