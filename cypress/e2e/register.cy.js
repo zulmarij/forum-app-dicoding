@@ -12,7 +12,7 @@ const dateNow = Date.now();
 
 describe('Register spec', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3001/register');
+    cy.visit('http://localhost:3000/register');
   });
 
   it('should display register page correctly', () => {

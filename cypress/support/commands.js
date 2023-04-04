@@ -13,7 +13,7 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 Cypress.Commands.add('login', (email, password) => {
   // membuka halaman login
-  cy.visit('http://localhost:3001/login');
+  cy.visit('http://localhost:3000/login');
 
   // mengisi email
   cy.get('input[placeholder=Email]').type(email);
