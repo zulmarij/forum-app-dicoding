@@ -1,9 +1,8 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useAutoFocus, useInput } from '../../hooks';
-import { asyncCreateComment } from '../../app/states/detailThread/action';
 
 const CommentInput = forwardRef(({ onChange, value }, ref) => (
   <textarea
@@ -15,19 +14,15 @@ const CommentInput = forwardRef(({ onChange, value }, ref) => (
   />
 ));
 
-export default function CommentsForm({ threadId }) {
-  const dispatch = useDispatch();
+export default function CommentsForm({ onCreateComment }) {
   const { authUser } = useSelector((state) => state);
   const { hash } = useLocation();
   const commentFocus = useAutoFocus(hash);
   const [content, setContent, changeContent] = useInput();
 
-  const onCreateComment = () => {
-    dispatch(asyncCreateComment({ threadId, content })).then(({ status }) => {
-      if (status === 'success') {
-        changeContent('');
-      }
-    });
+  const handleOnCreateComment = async () => {
+    await onCreateComment({ content });
+    changeContent('');
   };
 
   return (
@@ -41,8 +36,12 @@ export default function CommentsForm({ threadId }) {
             onChange={setContent}
           />
           <div className="card-actions mb-2">
-            <button type="button" className="btn" onClick={onCreateComment}>
-              Post Comments
+            <button
+              type="button"
+              className="btn"
+              onClick={handleOnCreateComment}
+            >
+              Post Comment
             </button>
           </div>
         </>
@@ -65,5 +64,5 @@ CommentInput.propTypes = {
 };
 
 CommentsForm.propTypes = {
-  threadId: PropTypes.string.isRequired,
+  onCreateComment: PropTypes.func.isRequired,
 };

@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import CommentsForm from './CommentsForm';
 import Comment from './Comment';
+import { asyncCreateComment } from '../../app/states/detailThread/action';
 
-export default function DetailThreadComments({ threadId, comments }) {
+export default function Comments({ threadId, comments }) {
+  const dispatch = useDispatch();
+
+  const onCreateComment = async ({ content }) => {
+    await dispatch(asyncCreateComment({ threadId, content }));
+  };
+
   return (
     <div className="card bg-base-100 shadow-xl mt-4">
       <div className="card-body">
-        <CommentsForm threadId={threadId} />
+        <CommentsForm onCreateComment={onCreateComment} />
         {comments.map((comment) => (
           <Comment key={comment.id} threadId={threadId} {...comment} />
         ))}
@@ -25,7 +33,7 @@ const commentsShape = {
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-DetailThreadComments.propTypes = {
+Comments.propTypes = {
   threadId: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape(commentsShape)).isRequired,
 };
