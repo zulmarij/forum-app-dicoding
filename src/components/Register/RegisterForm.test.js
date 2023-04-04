@@ -39,18 +39,6 @@ describe('RegisterForm component', () => {
     expect(emailInput).toHaveValue('emailtest@gmail.com');
   });
 
-  it('should handle email typing correctly', async () => {
-    // Arrange
-    await act(async () => render(<RegisterForm onRegister={() => {}} />));
-    const emailInput = await screen.getByPlaceholderText('Email');
-
-    // Action
-    await act(async () => userEvent.type(emailInput, 'emailtest@gmail.com'));
-
-    // Assert
-    expect(emailInput).toHaveValue('emailtest@gmail.com');
-  });
-
   it('should handle password typing correctly', async () => {
     // Arrange
     await act(async () => render(<RegisterForm onRegister={() => {}} />));
