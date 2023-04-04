@@ -27,7 +27,7 @@ export default function CommentsForm({ onCreateComment }) {
 
   return (
     <>
-      <p className="font-bold">COMMENT</p>
+      <h1 className="font-bold">COMMENT</h1>
       {authUser ? (
         <>
           <CommentInput
