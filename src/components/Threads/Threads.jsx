@@ -8,7 +8,7 @@ export default function Threads({ threads }) {
 
   return (
     <article>
-      <h1 className="font-bold text-2xl">Threads</h1>
+      <h1 className="font-bold text-xl">Threads</h1>
       {threads ? (
         <article className="grid lg:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-4 mt-2">
           {threads.map((thread) => (

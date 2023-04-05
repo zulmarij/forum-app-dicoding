@@ -5,7 +5,7 @@ export default function Leaderboards({ leaderboards }) {
   return (
     <div className="card bg-base-100 shadow-xl">
       <div className="card-body">
-        <h1 className="font-bold text-2xl">Leaderboards</h1>
+        <h1 className="font-bold text-xl">Leaderboards</h1>
         <div className="overflow-x-auto w-full mt-4">
           <table className="table w-full">
             <thead>

@@ -47,7 +47,7 @@ export default function Thread({
   return (
     <div className="card bg-base-100 shadow-xl hover:scale-105 duration-300">
       <div className="card-body">
-        <h2 className="card-title line-clamp-2 text-xl">
+        <h2 className="card-title line-clamp-2">
           <Link to={`/thread/${id}`}>{title}</Link>
         </h2>
         <Owner avatar={owner.avatar} name={owner.name} createdAt={createdAt} />
