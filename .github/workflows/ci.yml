@@ -17,5 +17,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install and test
         run: |
-          npm install --legacy-peer-deps
+          npm install --force
           npm run ci:test
