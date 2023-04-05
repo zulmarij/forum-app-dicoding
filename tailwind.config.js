@@ -15,4 +15,7 @@ module.exports = {
     extend: {},
   },
   plugins: [daisyUi, lineClamp],
+  daisyui: {
+    themes: ['light'],
+  },
 };
