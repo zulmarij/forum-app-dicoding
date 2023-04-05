@@ -27,7 +27,7 @@ Cypress.Commands.add('login', (email, password) => {
   cy.url().should('include', '/threads');
 
   // memverifikasi bahwa elemen yang berada di homepage ditampilkan ketika user login
-  cy.get('button').contains('Logout').should('be.visible');
+  cy.get('label[for="create-thread-modal"]').should('be.visible');
 });
 //
 //

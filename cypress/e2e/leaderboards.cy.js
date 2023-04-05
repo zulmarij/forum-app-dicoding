@@ -1,14 +1,14 @@
 /**
  * - Leaderboards spec
- *   - should display leaderbords page correctly
+ *   - should display leaderboards page correctly
  */
 
 describe('Leaderboards spec', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/leaderbords');
+    cy.visit('http://localhost:3000/leaderboards');
   });
 
-  it('should display leaderbords page correctly', () => {
+  it('should display leaderboards page correctly', () => {
     // memverifikasi elemen yang harus tampak pada halaman leaderboards
     cy.get('h1').should('contain', 'Leaderboards');
   });

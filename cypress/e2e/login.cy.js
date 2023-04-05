@@ -75,6 +75,6 @@ describe('Login spec', () => {
     cy.get('button').contains(/^Login$/).click();
 
     // memverifikasi bahwa elemen yang berada di homepage ditampilkan
-    cy.get('button').contains('Logout').should('be.visible');
+    cy.get('label[for="create-thread-modal"]').should('be.visible');
   });
 });
