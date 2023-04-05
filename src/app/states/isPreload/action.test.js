@@ -37,6 +37,7 @@ describe('asyncIsPreload thunk', () => {
     // arrange
     // stub implementation
     api.getOwnProfile = () => Promise.resolve(fakeAuthUserResponse);
+    api.getAccessToken = () => 'customtoken';
     // mock dispatch
     const dispatch = jest.fn();
 
