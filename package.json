@@ -24,8 +24,8 @@
     "lint": "eslint ./src --ext .jsx --ext .js",
     "e2e": "cypress run",
     "ci:test": "react-scripts test --watchAll=false && start-server-and-test start http-get://0.0.0.0:3000 e2e",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -c .storybook -o ./build/storybook"
+    "storybook": "storybook dev -p 6006 -s public",
+    "build-storybook": "storybook build -s public -o ./build/storybook"
   },
   "eslintConfig": {
     "extends": [

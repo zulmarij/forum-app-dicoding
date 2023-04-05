@@ -1,7 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build && npm run build-storybook",
-  "installCommand": "npm install --legacy-peer-deps",
-  "framework": "create-react-app",
-  "outputDirectory": "./build"
 }
